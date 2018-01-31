@@ -1,0 +1,54 @@
+.welcome {
+    margin: auto;
+    background-color: transparent;
+    z-index: 50;
+    width: 100%;
+}
+
+video {
+	position: fixed;
+	top:0;
+	left:0;
+	min-height: 100vh;
+	min-width: 100vw;
+	filter: brightness(60%);
+}
+
+.possibilities {
+	background-color: transparent;
+	margin-top: 30vh;
+	z-index: 50;
+	color: white;
+	text-align: center;
+	font-size: 35px;
+}
+
+.possibility{
+padding-top: 20px;
+}
+
+.possibility > i {
+font-size: 55px;
+}
+
+.hero{
+margin-top: 40vh;
+text-align: center;
+z-index: -50;
+}
+
+.hero > h1 {
+font-size: 90px;
+font-weight: bold;
+color: white;
+}
+
+.hero > .btn {
+	background-color: #2ECC40;
+	font-size: 25px;
+	border-radius: 25px;
+	color: white;
+	padding: 5px 15px 5px 15px;
+	margin-top: 10px;
+	box-shadow: 0 3px 3px -2px black;
+}

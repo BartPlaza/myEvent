@@ -1,0 +1,21 @@
+.workspace{
+	margin-bottom: auto;
+	display: flex;
+	flex: 1;
+}
+
+.dashboard{
+
+}
+
+.sidebar{
+	background-color: $main-font;
+	margin: 0;
+	color: white;
+	padding: 0;
+}
+
+.sidebar-item{
+	padding: 10px;
+	font-size: 15px;
+}

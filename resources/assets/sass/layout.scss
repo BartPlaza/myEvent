@@ -1,0 +1,62 @@
+ html, body {
+    background-color: #fff;
+    color: $main-font;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid $main-font;
+    opacity: 0.8;
+    background-color: white;
+    z-index: 100;
+    position: sticky;
+    top:0;
+    padding-right: 40px;
+}
+
+nav > ul {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+nav a {
+    color: $main-font;
+    padding: 0 25px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.links > a{
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+footer {
+    text-align: center;
+    padding:20px;
+    color: white;
+    background-color: $main-font;
+}
