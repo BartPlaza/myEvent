@@ -8503,13 +8503,26 @@ video {
 
 .sidebar {
   background-color: #636b6f;
-  margin: 0;
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 0;
 }
 
-.sidebar-item {
+.sidebar > a {
+  color: white;
   padding: 10px;
-  font-size: 15px;
+  font-size: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar > a:hover {
+  font-weight: bold;
 }
 
