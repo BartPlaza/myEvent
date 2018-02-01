@@ -7,12 +7,13 @@
         data: function(){
             return {
                 elements: [],
-                authUser: this.user
+                authUser: JSON.parse(this.user),
+                myEvents: ''
             }
         },
         created() {
             this.giveElementsId();
-            this.user
+            console.log(this.authUser);
         },
          methods: {
             giveElementsId: function() {
@@ -28,12 +29,19 @@
                 });
                 this.elements[id].active = true;
             },
-            showTab(id){
+            showMyEvents(id){
+                let el = this;
                 this.makeActive(id);
-                this.showMyEvents();
+                axios.get('/' + this.authUser.id + '/events')
+                .then(function (response) {
+                    el.myEvents = response.data;
+                })
+                  .catch(function (error) {
+                    console.log(error);
+                });
             },
-            showMyEvents: function(){
-                alert('ok');
+            showEvent(id){
+                alert(id);
             }
         }
 

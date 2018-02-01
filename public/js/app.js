@@ -43066,12 +43066,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             elements: [],
-            authUser: this.user
+            authUser: JSON.parse(this.user),
+            myEvents: ''
         };
     },
     created: function created() {
         this.giveElementsId();
-        this.user;
+        console.log(this.authUser);
     },
 
     methods: {
@@ -43088,13 +43089,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.elements[id].active = true;
         },
-        showTab: function showTab(id) {
+        showMyEvents: function showMyEvents(id) {
+            var el = this;
             this.makeActive(id);
-            this.showMyEvents();
+            axios.get('/' + this.authUser.id + '/events').then(function (response) {
+                el.myEvents = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
-
-        showMyEvents: function showMyEvents() {
-            alert('ok');
+        showEvent: function showEvent(id) {
+            alert(id);
         }
     }
 

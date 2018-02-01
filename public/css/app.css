@@ -8563,3 +8563,166 @@ video {
   cursor: default;
 }
 
+#my-events {
+  padding: 20px;
+}
+
+#my-events tbody > tr:hover {
+  cursor: pointer;
+  background-color: #e5e5e5;
+}
+
+#my-events tbody > a {
+  display: block;
+}
+
+#event {
+  width: 100%;
+  margin: auto;
+}
+
+.event-header {
+  background-color: #e54242;
+  width: 100%;
+  height: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-header > span {
+  height: 260px;
+  width: 260px;
+  background-color: #e54242;
+  border-radius: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-header > span > span {
+  height: 230px;
+  width: 230px;
+  border: 8px solid white;
+  border-radius: 115px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.event-header > span > span > span {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.event-header > span > span > span > span {
+  height: 90px;
+  width: 60px;
+  margin-left: 50%;
+  border-left: 8px solid white;
+  border-bottom: 8px solid white;
+  margin-bottom: 45%;
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+}
+
+.header-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: white;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 45px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.header-date > span:first-child {
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.event-info {
+  margin-top: 120px;
+  margin-bottom: 80px;
+  color: #e54242;
+}
+
+.event-info i {
+  font-size: 70px;
+  text-align: center;
+}
+
+.event-info-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-info-section * {
+  margin: 0;
+}
+
+.event-info-section > span {
+  margin-left: 20px;
+}
+
+.event-info-section p {
+  font-size: 18px;
+  color: #636b6f;
+}
+
+.event-description .panel-heading {
+  background-color: #e54242;
+  color: white;
+}
+
+.event-description .panel-body {
+  border: 1px solid #e54242;
+}
+

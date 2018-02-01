@@ -1,6 +1,7 @@
 <nav>
     <ul class="list-unstyled">
-        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('welcome') }}">Home</a></li>
+        @auth<li><a href="{{ route('home') }}">Dashboard</a></li>@endauth
         <li><a href="{{ route('login') }}">About</a></li>
         <li><a href="{{ route('login') }}">Help</a></li>
     </ul>

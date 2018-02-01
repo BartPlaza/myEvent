@@ -13,9 +13,10 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/{id}/events', 'EventController@showAll')->name('myEvents');
+Route::get('/{user}/events', 'EventController@showAll')->name('myEvents');
+Route::get('/event/{event}', 'EventController@show');
