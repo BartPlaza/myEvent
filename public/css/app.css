@@ -8435,6 +8435,20 @@ footer {
   background-color: transparent;
   z-index: 50;
   width: 100%;
+  margin-top: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 video {
@@ -8449,11 +8463,16 @@ video {
 
 .possibilities {
   background-color: transparent;
-  margin-top: 30vh;
   z-index: 50;
   color: white;
   text-align: center;
-  font-size: 35px;
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .possibilities {
+    margin-top: 20vh;
+  }
 }
 
 .possibility {
@@ -8465,7 +8484,7 @@ video {
 }
 
 .hero {
-  margin-top: 40vh;
+  width: 100%;
   text-align: center;
   z-index: -50;
 }
@@ -8474,6 +8493,12 @@ video {
   font-size: 90px;
   font-weight: bold;
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero > h1 {
+    font-size: 50px;
+  }
 }
 
 .hero > .btn {
@@ -8485,6 +8510,10 @@ video {
   margin-top: 10px;
   -webkit-box-shadow: 0 3px 3px -2px black;
           box-shadow: 0 3px 3px -2px black;
+}
+
+.hero > .btn:hover {
+  background-color: green;
 }
 
 .container {
@@ -8520,9 +8549,17 @@ video {
   font-size: 20px;
   text-decoration: none;
   display: block;
+  text-align: center;
+  border-bottom: 1px solid white;
 }
 
-.sidebar > a:hover {
+.sidebar > a:not(.active):hover {
   font-weight: bold;
+}
+
+.sidebar > a.active {
+  background-color: white;
+  color: #636b6f;
+  cursor: default;
 }
 

@@ -3,6 +3,11 @@
     background-color: transparent;
     z-index: 50;
     width: 100%;
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex:1;
 }
 
 video {
@@ -16,11 +21,14 @@ video {
 
 .possibilities {
 	background-color: transparent;
-	margin-top: 30vh;
 	z-index: 50;
 	color: white;
 	text-align: center;
-	font-size: 35px;
+	font-size: 30px;
+
+	@media #{$small} {
+		margin-top: 20vh;
+	}
 }
 
 .possibility{
@@ -32,15 +40,20 @@ font-size: 55px;
 }
 
 .hero{
-margin-top: 40vh;
+width: 100%;
 text-align: center;
 z-index: -50;
+
 }
 
 .hero > h1 {
 font-size: 90px;
 font-weight: bold;
 color: white;
+
+	@media #{$small} {
+		font-size: 50px;
+	}
 }
 
 .hero > .btn {
@@ -51,4 +64,8 @@ color: white;
 	padding: 5px 15px 5px 15px;
 	margin-top: 10px;
 	box-shadow: 0 3px 3px -2px black;
+}
+
+.hero > .btn:hover {
+	background-color: green;
 }

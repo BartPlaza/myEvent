@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('workspace-navigation', require('./components/WorkspaceNavigation.vue'));
+Vue.component('my-events', require('./components/MyEvents.vue'));
 
 const app = new Vue({
     el: '#app'

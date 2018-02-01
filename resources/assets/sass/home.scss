@@ -22,8 +22,16 @@
 	font-size: 20px;
 	text-decoration: none;
 	display: block;
+	text-align: center;
+	border-bottom: 1px solid white;
 }
 
-.sidebar > a:hover {
+.sidebar > a:not(.active):hover {
 	font-weight: bold;
+}
+
+.sidebar > a.active {
+	background-color: white;
+	color: $main-font;
+	cursor: default;
 }
