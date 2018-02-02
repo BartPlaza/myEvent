@@ -6,31 +6,48 @@
 .event-header {
 	background-color: $red;
 	width: 100%;
-	height: 140px;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media #{$small} {
+		height: 70px;
+	}
 }
 
 .event-header > span {
-	height: 260px;
-	width: 260px;
+	height: 230px;
+	width: 230px;
 	background-color: $red;
-	border-radius: 130px;
+	border-radius: 115px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media #{$small} {
+		height: 130px;
+		width: 130px;
+		border-radius: 65px;
+	}
 
 }
 
 .event-header > span > span {
-	height: 230px;
-	width: 230px;
+	height: 200px;
+	width: 200px;
 	border: 8px solid white;
-	border-radius: 115px;
+	border-radius: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	@media #{$small} {
+		height: 110px;
+		width: 110px;
+		border-radius: 55px;
+		border: 5px solid white;
+	}
 }
 
 .event-header > span > span > span {
@@ -39,7 +56,13 @@
 	background-color: white;
 	border-radius: 10px;
 	display:flex;
-	position: relative
+	position: relative;
+
+	@media #{$small} {
+		height: 14px;
+		width: 14px;
+		border-radius: 7px;
+	}
 
 
 }
@@ -54,6 +77,13 @@
 	position: absolute;
 	bottom: -4px;
 	left: -4px;
+
+	@media #{$small} {
+		height: 45px;
+		width: 32px;
+		border-left: 5px solid white;
+		border-bottom: 5px solid white;
+	}
 }
 
 
@@ -69,21 +99,42 @@
 	margin-right: 20px;
 	margin-left: 20px;
 
+	@media #{$small} {
+		font-size: 22px;
+		line-height: 22px;
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+
 }
 .header-date > span:first-child{
 	font-size: 30px;
-	line-height: 35px;
+	line-height: 30px;
+
+	@media #{$small} {
+		font-size: 14px;
+		line-height: 14px;
+	}
 }
 
 .event-info {
 	margin-top: 120px;
 	margin-bottom: 80px;
 	color: $red;
+
+	@media #{$small} {
+		margin-top: 60px;
+		margin-bottom: 40px;
+	}
 }
 
 .event-info i {
 font-size: 70px;
 text-align: center;
+
+	@media #{$small} {
+		font-size: 45px;
+	}
 
 }
 
@@ -92,6 +143,18 @@ text-align: center;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+}
+
+.event-info-section:not(:first-child){
+	@media #{$small} {
+		margin-top: 40px;
+	}
+}
+
+.event-info-section:nth-child(n+3){
+	@media #{$md} {
+		margin-top: 50px;
+	}
 }
 
 .event-info-section * {
@@ -107,15 +170,12 @@ margin: 0;
 	color: $main-font;
 }
 
-.event-description {
 
-}
-
-.event-description .panel-heading {
+.event-panel .panel-heading {
 	background-color: $red;
 	color: white;
 }
 
-.event-description .panel-body {
+.event-panel .panel-body {
 	border: 1px solid $red;
 }

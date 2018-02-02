@@ -28,7 +28,7 @@
 			</span>
 		</div>
 	</div>
-	<div class="event-info col-md-12">
+	<div class="event-info col-xs-12">
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-map-marker"></i>
 		<span><h2>Location</h2><p>Adress</p></span>
@@ -46,14 +46,18 @@
 		<span><h2>Location</h2><p>Adress</p></span>
 		</div>	
 	</div>
-	<div class="event-main col-md-12">
-		<div class="event-description panel col-md-6">
+	<div class="event-description col-xs-12">
+		<div class="event-panel panel col-md-6 col-sm-12">
 			  <div class="panel-heading">Event description</div>
 			  <div class="panel-body">
 			    {{$event->description}}}
 			  </div>
 		</div>
-		<div class="event-chat col-md-6">
+		<div class="event-panel panel col-md-6 col-sm-12">
+			<div class="panel-heading">Event description</div>
+			<div class="panel-body">
+			   {{$event->description}}}
+			</div>
 		</div>
 	</div>
 </div>

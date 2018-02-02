@@ -8584,7 +8584,7 @@ video {
 .event-header {
   background-color: #e54242;
   width: 100%;
-  height: 140px;
+  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8594,38 +8594,61 @@ video {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .event-header {
+    height: 70px;
+  }
 }
 
 .event-header > span {
-  height: 260px;
-  width: 260px;
-  background-color: #e54242;
-  border-radius: 130px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.event-header > span > span {
   height: 230px;
   width: 230px;
-  border: 8px solid white;
+  background-color: #e54242;
   border-radius: 115px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .event-header > span {
+    height: 130px;
+    width: 130px;
+    border-radius: 65px;
+  }
+}
+
+.event-header > span > span {
+  height: 200px;
+  width: 200px;
+  border: 8px solid white;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .event-header > span > span {
+    height: 110px;
+    width: 110px;
+    border-radius: 55px;
+    border: 5px solid white;
+  }
 }
 
 .event-header > span > span > span {
@@ -8639,6 +8662,14 @@ video {
   position: relative;
 }
 
+@media only screen and (max-width: 768px) {
+  .event-header > span > span > span {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+  }
+}
+
 .event-header > span > span > span > span {
   height: 90px;
   width: 60px;
@@ -8649,6 +8680,15 @@ video {
   position: absolute;
   bottom: -4px;
   left: -4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .event-header > span > span > span > span {
+    height: 45px;
+    width: 32px;
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+  }
 }
 
 .header-date {
@@ -8672,9 +8712,25 @@ video {
   margin-left: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+  .header-date {
+    font-size: 22px;
+    line-height: 22px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
+
 .header-date > span:first-child {
   font-size: 30px;
-  line-height: 35px;
+  line-height: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .header-date > span:first-child {
+    font-size: 14px;
+    line-height: 14px;
+  }
 }
 
 .event-info {
@@ -8683,9 +8739,22 @@ video {
   color: #e54242;
 }
 
+@media only screen and (max-width: 768px) {
+  .event-info {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+}
+
 .event-info i {
   font-size: 70px;
   text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .event-info i {
+    font-size: 45px;
+  }
 }
 
 .event-info-section {
@@ -8704,6 +8773,18 @@ video {
           align-items: center;
 }
 
+@media only screen and (max-width: 768px) {
+  .event-info-section:not(:first-child) {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .event-info-section:nth-child(n+3) {
+    margin-top: 50px;
+  }
+}
+
 .event-info-section * {
   margin: 0;
 }
@@ -8717,12 +8798,12 @@ video {
   color: #636b6f;
 }
 
-.event-description .panel-heading {
+.event-panel .panel-heading {
   background-color: #e54242;
   color: white;
 }
 
-.event-description .panel-body {
+.event-panel .panel-body {
   border: 1px solid #e54242;
 }
 
