@@ -43098,6 +43098,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
+        createEvent: function createEvent() {
+            this.makeActive(0);
+        },
         showEvent: function showEvent(id) {
             alert(id);
         }

@@ -8563,7 +8563,7 @@ video {
   cursor: default;
 }
 
-#my-events {
+.dashboard-content {
   padding: 20px;
 }
 

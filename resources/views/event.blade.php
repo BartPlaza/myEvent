@@ -39,7 +39,7 @@
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-user"></i>
-		<span><h2>Location</h2><p>Adress</p></span>
+		<span><h2>Owner</h2><p>{{$event->owner->name}}</p></span>
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-map-marker"></i>
@@ -50,13 +50,13 @@
 		<div class="event-panel panel col-md-6 col-sm-12">
 			  <div class="panel-heading">Event description</div>
 			  <div class="panel-body">
-			    {{$event->description}}}
+			    {{$event->description}}
 			  </div>
 		</div>
 		<div class="event-panel panel col-md-6 col-sm-12">
-			<div class="panel-heading">Event description</div>
+			<div class="panel-heading">Live chat</div>
 			<div class="panel-body">
-			   {{$event->description}}}
+			   
 			</div>
 		</div>
 	</div>

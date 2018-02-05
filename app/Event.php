@@ -23,7 +23,7 @@ class Event extends Model
     }
 
      public function startTime() {
-    	$date = Carbon::parse($this->start_date);
-    	return $date->hour.':'.$date->minute;
+    	$time = Carbon::parse($this->start_time)->format('y:m');
+    	return $time;
     }
 }

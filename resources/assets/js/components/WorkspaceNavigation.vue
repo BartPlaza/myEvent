@@ -40,6 +40,10 @@
                     console.log(error);
                 });
             },
+            createEvent(){
+                this.makeActive(0);
+
+            },
             showEvent(id){
                 alert(id);
             }
