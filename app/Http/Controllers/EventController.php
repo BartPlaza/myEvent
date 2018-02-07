@@ -28,4 +28,9 @@ class EventController extends Controller
     	$event->start_time = $request->input('time');
     	$event->save();
     }
+
+    public function update(Request $request, Event $event)
+    {
+        return 'okk';
+    }
 }

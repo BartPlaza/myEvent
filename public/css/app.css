@@ -8568,12 +8568,19 @@ video {
 }
 
 #my-events tbody > tr:hover {
-  cursor: pointer;
   background-color: #e5e5e5;
 }
 
 #my-events tbody > a {
   display: block;
+}
+
+td.borderless {
+  border: none !important;
+}
+
+td.text-bottom {
+  vertical-align: bottom !important;
 }
 
 #event {

@@ -9,7 +9,8 @@
                 elements: [],
                 authUser: JSON.parse(this.user),
                 myEvents: '',
-                eventEditing: false
+                editingEvent: {},
+                tempEvent: {}
             }
         },
         created() {
@@ -45,7 +46,45 @@
                 this.makeActive(0);
             },
             editEvent(id){
-                this.eventEditing = true;
+                let editingEventId = this.myEvents.findIndex(function(event){
+                    return event.id == id;
+                });
+                this.editingEvent = this.myEvents[editingEventId];
+                this.tempEvent.id = this.myEvents[editingEventId].id;
+                this.tempEvent.title = this.myEvents[editingEventId].title;
+                this.tempEvent.start_date = this.myEvents[editingEventId].start_date;
+                this.tempEvent.start_time = this.myEvents[editingEventId].start_time;
+                this.tempEvent.description = this.myEvents[editingEventId].description;
+             
+            },
+            clearEditing(){
+                this.editingEvent = '';
+            },
+            updateEvent(){
+                if(this.editingEvent.title != this.tempEvent.title ||
+                   this.editingEvent.description != this.tempEvent.description||
+                   this.editingEvent.start_date != this.tempEvent.start_date ||
+                   this.editingEvent.start_time != this.tempEvent.start_time)
+                    {
+                        if(this.tempEvent.title !='' && this.tempEvent.description !='' && this.tempEvent.start_date != '' && this.tempEvent.start_time != ''){
+                            axios.put('/event/'+this.editingEvent.id+'/edit', {
+                                eventTitle: this.tempEvent.title,
+                                eventDescription: this.tempEvent.description,
+                                eventDate: this.tempEvent.start_date,
+                                eventTime: this.tempEvent.start_time
+                            })
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                              .catch(function (error) {
+                                console.log(error);
+                            });
+                        } else {
+                            alert('All fields are required');
+                        }
+                    } else {
+                        alert('Nothing was changed!');
+                }
             }
         }
 
