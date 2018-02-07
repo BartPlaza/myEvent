@@ -47,8 +47,7 @@
                       <th scope="col">Title</th>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
+                      <th scope="col" class="text-center">Actions</th>
                     </tr>
                   </thead>
                   <tbody v-for="(event, index) in myEvents">
@@ -57,29 +56,33 @@
                       <td><input type="text" v-model="tempEvent.title" v-if="editingEvent.id == event.id" size="60"><span v-else>@{{event.title}}</span></td>
                       <td><input type="date" v-model="tempEvent.start_date" v-if="editingEvent.id == event.id" ><span v-else>@{{event.start_date}}</span></td>
                       <td><input type="time" v-model="tempEvent.start_time" v-if="editingEvent.id == event.id" ><span v-else>@{{event.start_time}}</span> </td>
-                      <td><a :href="'/event/' + event.id" 
+                      <td class="text-center">
+                        <a :href="'/event/' + event.id" 
                              class="btn btn-primary btn-sm"
-                             v-show="editingEvent.id !== event.id">Show</a></td>
-                      <td>
+                             v-show="editingEvent.id !== event.id">Show
+                        </a>
                         <div class="btn btn-warning btn-sm" 
                              v-on:click="editEvent(event.id)"
-                             v-show="editingEvent.id !== event.id">Edit</div>
+                             v-show="editingEvent.id !== event.id">Edit
+                        </div>
+                        <div class="btn btn-danger btn-sm" 
+                             v-on:click="deleteEvent(event.id)"
+                             v-show="editingEvent.id !== event.id">Delete
+                        </div>
                      </td>
                     </tr>
                     <tr :class="{'warning' : editingEvent.id == event.id}" v-show="editingEvent.id == event.id">
                         <td class="borderless"></td>
                         <td class="borderless"><textarea class="form-control" v-model="tempEvent.description" ></textarea></td>
                         <td class="borderless" colspan="2"></td>
-                        <td class="borderless text-bottom">
+                        <td class="borderless text-bottom text-center">
                             <div class="btn btn-default btn-sm"
                                  v-on:click="updateEvent()">Update
                             </div>
-                        </td>
-                        <td class="borderless text-bottom">
                             <div class="btn btn-default btn-sm"
                                  v-on:click="clearEditing()">Cancel
-                             </div>
-                         </td>
+                            </div>
+                        </td>
                     </tr>
                   </tbody>
                 </table>

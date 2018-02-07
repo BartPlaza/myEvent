@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{user}/events', 'EventController@showAll')->name('myEvents');
 Route::get('/event/{event}', 'EventController@show');
 Route::put('/event/{event}/edit', 'EventController@update');
+Route::delete('/event/{event}/delete', 'EventController@delete');
 Route::post('/event/create', 'EventController@store');
 

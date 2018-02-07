@@ -43124,7 +43124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.tempEvent.description = this.myEvents[editingEventId].description;
         },
         clearEditing: function clearEditing() {
-            if (confirm("Do you want to stop editing? Your lose all changes.")) {
+            if (confirm("Do you want to stop editing? You will lose all changes.")) {
                 this.editingEvent = {};
                 this.tempEvent = {};
             }
@@ -43164,6 +43164,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             } else {
                 alert('Nothing was changed!');
+            }
+        },
+        deleteEvent: function deleteEvent(id) {
+            var el = this;
+            if (confirm("Do you really want to delete this event?")) {
+                axios({
+                    method: 'delete',
+                    url: '/event/' + id + '/delete'
+                }).then(function (response) {
+                    var eventId = el.myEvents.findIndex(function (event) {
+                        return event.id == response.data;
+                    });
+                    el.myEvents.splice(eventId, 1);
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
         }
     }

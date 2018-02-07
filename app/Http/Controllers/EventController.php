@@ -27,6 +27,8 @@ class EventController extends Controller
     	$event->start_date = $request->input('date');
     	$event->start_time = $request->input('time');
     	$event->save();
+
+    	return back();
     }
 
     public function update(Request $request, Event $event)
@@ -37,5 +39,10 @@ class EventController extends Controller
     	$event->start_time = $request->input('eventTime');
     	$event->save();
         return $event->id;
+    }
+
+    public function delete(Event $event){
+    	$event->delete();
+    	return $event->id;
     }
 }

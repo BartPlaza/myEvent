@@ -67,7 +67,7 @@
              
             },
             clearEditing(){
-                if (confirm("Do you want to stop editing? Your lose all changes.")) {
+                if (confirm("Do you want to stop editing? You will lose all changes.")) {
                     this.editingEvent = {};
                     this.tempEvent = {};
                 } 
@@ -114,6 +114,24 @@
                     } else {
                         alert('Nothing was changed!');
                 }
+            },
+            deleteEvent(id){
+                let el = this;
+                if (confirm("Do you really want to delete this event?")) {
+                    axios({
+                    method: 'delete',
+                    url: '/event/'+id+'/delete'
+                    })
+                    .then(function (response) {
+                        let eventId = el.myEvents.findIndex(function(event){
+                            return event.id == response.data;
+                        });
+                        el.myEvents.splice(eventId,1);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                } 
             }
         }
 
