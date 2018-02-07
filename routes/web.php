@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{user}/events', 'EventController@showAll')->name('myEvents');
 Route::get('/event/{event}', 'EventController@show');
 Route::post('/event/create', 'EventController@store');
+

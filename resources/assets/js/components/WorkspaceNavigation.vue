@@ -8,7 +8,8 @@
             return {
                 elements: [],
                 authUser: JSON.parse(this.user),
-                myEvents: ''
+                myEvents: '',
+                eventEditing: false
             }
         },
         created() {
@@ -42,10 +43,9 @@
             },
             createEvent(){
                 this.makeActive(0);
-
             },
-            showEvent(id){
-                alert(id);
+            editEvent(id){
+                this.eventEditing = true;
             }
         }
 

@@ -43067,7 +43067,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             elements: [],
             authUser: JSON.parse(this.user),
-            myEvents: ''
+            myEvents: '',
+            eventEditing: false
         };
     },
     created: function created() {
@@ -43101,8 +43102,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createEvent: function createEvent() {
             this.makeActive(0);
         },
-        showEvent: function showEvent(id) {
-            alert(id);
+        editEvent: function editEvent(id) {
+            this.eventEditing = true;
         }
     }
 
