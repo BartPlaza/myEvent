@@ -46,6 +46,15 @@
                 this.makeActive(0);
             },
             editEvent(id){
+                if(Object.keys(this.editingEvent).length){
+                    if(confirm("Do you want to stop editing previouse Event? Your lose all changes.")) {
+                    this.editingEvent = {};
+                    this.tempEvent = {};
+                    } else {
+                        return;
+                    }
+                }
+
                 let editingEventId = this.myEvents.findIndex(function(event){
                     return event.id == id;
                 });
@@ -58,27 +67,47 @@
              
             },
             clearEditing(){
-                this.editingEvent = '';
+                if (confirm("Do you want to stop editing? Your lose all changes.")) {
+                    this.editingEvent = {};
+                    this.tempEvent = {};
+                } 
             },
             updateEvent(){
+                let el = this;
                 if(this.editingEvent.title != this.tempEvent.title ||
                    this.editingEvent.description != this.tempEvent.description||
                    this.editingEvent.start_date != this.tempEvent.start_date ||
                    this.editingEvent.start_time != this.tempEvent.start_time)
                     {
                         if(this.tempEvent.title !='' && this.tempEvent.description !='' && this.tempEvent.start_date != '' && this.tempEvent.start_time != ''){
-                            axios.put('/event/'+this.editingEvent.id+'/edit', {
-                                eventTitle: this.tempEvent.title,
-                                eventDescription: this.tempEvent.description,
-                                eventDate: this.tempEvent.start_date,
-                                eventTime: this.tempEvent.start_time
-                            })
-                            .then(function (response) {
-                                console.log(response);
-                            })
-                              .catch(function (error) {
-                                console.log(error);
-                            });
+
+                            if (confirm("Are you sure that you want to update event info?")) {
+                                axios({
+                                method: 'put',
+                                url: '/event/'+this.editingEvent.id+'/edit',
+                                data: {
+                                    eventTitle: this.tempEvent.title,
+                                    eventDescription: this.tempEvent.description,
+                                    eventDate: this.tempEvent.start_date,
+                                    eventTime: this.tempEvent.start_time
+                                }
+                                })
+                                .then(function (response) {
+                                    let eventId = el.myEvents.findIndex(function(event){
+                                        return event.id == response.data;
+                                    });
+                                    let temp = el.myEvents[eventId];
+                                    temp.title = el.tempEvent.title;
+                                    temp.description = el.tempEvent.description;
+                                    temp.start_date = el.tempEvent.start_date;
+                                    temp.start_time = el.tempEvent.start_time;
+                                    el.editingEvent = {};
+                                    el.tempEvent = {};
+                                })
+                                  .catch(function (error) {
+                                    console.log(error);
+                                });
+                                } 
                         } else {
                             alert('All fields are required');
                         }

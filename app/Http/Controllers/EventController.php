@@ -31,6 +31,11 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
-        return 'okk';
+    	$event->title = $request->input('eventTitle');
+    	$event->description = $request->input('eventDescription');
+    	$event->start_date = $request->input('eventDate');
+    	$event->start_time = $request->input('eventTime');
+    	$event->save();
+        return $event->id;
     }
 }
