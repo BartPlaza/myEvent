@@ -17,10 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/events/create', 'DashboardController@newEvent')->name('newEvent');
+Route::post('/event/create', 'EventController@store');
+
 Route::get('/{user}/events', 'EventController@showAll')->name('myEvents');
 Route::get('/event/{event}', 'EventController@show');
 Route::put('/event/{event}/edit', 'EventController@update');
 Route::delete('/event/{event}/delete', 'EventController@delete');
-Route::post('/event/create', 'EventController@store');
+
 

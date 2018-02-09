@@ -8530,7 +8530,7 @@ video {
           flex: 1;
 }
 
-.sidebar {
+.dashboard_menu {
   background-color: #636b6f;
   color: white;
   display: -webkit-box;
@@ -8543,7 +8543,7 @@ video {
   padding: 0;
 }
 
-.sidebar > a {
+.dashboard_menu > a {
   color: white;
   padding: 10px;
   font-size: 20px;
@@ -8553,11 +8553,11 @@ video {
   border-bottom: 1px solid white;
 }
 
-.sidebar > a:not(.active):hover {
+.dashboard_menu > a:not(.active):hover {
   font-weight: bold;
 }
 
-.sidebar > a.active {
+.dashboard_menu > a.active {
   background-color: white;
   color: #636b6f;
   cursor: default;
@@ -8581,6 +8581,10 @@ td.borderless {
 
 td.text-bottom {
   vertical-align: bottom !important;
+}
+
+td.no-wrap {
+  white-space: nowrap;
 }
 
 #event {

@@ -58,9 +58,9 @@
                     <tr :class="{'warning' : editingEvent.id == event.id}">
                       <th scope="row">@{{index + 1}}</th>
                       <td><input type="text" v-model="tempEvent.title" v-if="editingEvent.id == event.id" size="60"><span v-else>@{{event.title}}</span></td>
-                      <td><input type="date" v-model="tempEvent.start_date" v-if="editingEvent.id == event.id" ><span v-else>@{{event.start_date}}</span></td>
+                      <td class="no-wrap"><input type="date" v-model="tempEvent.start_date" v-if="editingEvent.id == event.id" ><span v-else>@{{event.start_date}}</span></td>
                       <td><input type="time" v-model="tempEvent.start_time" v-if="editingEvent.id == event.id" ><span v-else>@{{event.start_time}}</span> </td>
-                      <td class="text-center">
+                      <td class="text-center no-wrap">
                         <a :href="'/event/' + event.id" 
                              class="btn btn-primary btn-sm"
                              v-show="editingEvent.id !== event.id">Show
@@ -78,7 +78,9 @@
                     <tr :class="{'warning' : editingEvent.id == event.id}" v-show="editingEvent.id == event.id">
                         <td class="borderless"></td>
                         <td class="borderless"><textarea class="form-control" v-model="tempEvent.description" ></textarea></td>
-                        <td class="borderless" colspan="2"></td>
+                        <td class="borderless" colspan="2">
+                          <edit-place></edit-place>
+                        </td>
                         <td class="borderless text-bottom text-center">
                             <div class="btn btn-default btn-sm"
                                  v-on:click="updateEvent()">Update

@@ -65,6 +65,7 @@
                 this.tempEvent.start_date = this.myEvents[editingEventId].start_date;
                 this.tempEvent.start_time = this.myEvents[editingEventId].start_time;
                 this.tempEvent.description = this.myEvents[editingEventId].description;
+                this.tempEvent.place_id = this.myEvents[editingEventId].place_id;
              
             },
             clearEditing(){

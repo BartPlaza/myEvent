@@ -21,7 +21,7 @@
 		</span>
 		<div class="header-date">
 			<span>
-				Event time
+				Start at
 			</span>
 			<span>
 				{{$event->startTime()}}
@@ -30,20 +30,20 @@
 	</div>
 	<div class="event-info col-xs-12">
 		<div class="event-info-section col-md-3 col-sm-6">
-		<i class="fa fa-map-marker"></i>
-		<span><h2>Location</h2><p id="event-location">Adress</p></span>
+		<i class="fas fa-comment-alt"></i>
+		<span><h2>Name</h2><p>{{$event->title}}</p></span>
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
-		<i class="fa fa-users"></i>
-		<span><h2>Location</h2><p>Adress</p></span>
+		<i class="fas fa-map-marker-alt"></i>
+		<span><h2>Location</h2><p id="event-location">No info</p></span>
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-user"></i>
 		<span><h2>Owner</h2><p>{{$event->owner->name}}</p></span>
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
-		<i class="fa fa-map-marker"></i>
-		<span><h2>Location</h2><p>Adress</p></span>
+		<i class="fas fa-users"></i>
+		<span><h2>Invited</h2><p>5 people</p></span>
 		</div>	
 	</div>
 	<div class="event-description col-xs-12">
@@ -61,7 +61,7 @@
 		</div>
 	</div>
 	@if($event->place_id != '')
-	<google-map  place-id="{{$event->place_id}}"></google-map>
+	<show-place  place-id="{{$event->place_id}}"></show-place>
 	@endif
 </div>
 @endsection

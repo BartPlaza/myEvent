@@ -17,8 +17,9 @@ window.Vue = require('vue');
 
 Vue.component('workspace-navigation', require('./components/WorkspaceNavigation.vue'));
 Vue.component('my-events', require('./components/MyEvents.vue'));
-Vue.component('google-map', require('./components/ShowPlace.vue'));
-Vue.component('find-place', require('./components/FindPlace.vue'));
+Vue.component('show-place', require('./components/Maps/ShowPlace.vue'));
+Vue.component('find-place', require('./components/Maps/FindPlace.vue'));
+Vue.component('edit-place', require('./components/Maps/EditPlace.vue'));
 
 const app = new Vue({
     el: '#app'

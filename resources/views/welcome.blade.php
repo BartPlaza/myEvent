@@ -8,7 +8,7 @@
 <div class="welcome">
     <div class="hero">
     <h1>Events for everyone</h1>
-    <a class="btn" href="{{route('home')}}">Create event</a>
+    <a class="btn" href="{{route('dashboard')}}">Create event</a>
     </div>
     <div class="possibilities col-sm-12">
         <div class="possibility col-sm-12 col-md-4">

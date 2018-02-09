@@ -29,7 +29,7 @@ class EventController extends Controller
     	$event->place_id = $request->input('place');
     	$event->save();
 
-    	return back();
+    	return redirect('/event/' . $event->id);
     }
 
     public function update(Request $request, Event $event)

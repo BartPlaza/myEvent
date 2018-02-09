@@ -16,6 +16,7 @@
 		},
 		data: function(){
 			return {
+				placeName: '',
 				location: {}
 			}
 		},
@@ -49,8 +50,14 @@
 				});
 				infowindow.setContent(vc.placeName);
 				infowindow.open(map,marker);
+				vc.updateLocation();
 			});
 			});
+		},
+		methods: {
+			updateLocation: function(){
+				document.getElementById('event-location').innerHTML=this.placeName;
+			}
 		}
 	}
 </script>
