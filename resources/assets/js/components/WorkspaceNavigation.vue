@@ -3,6 +3,7 @@
 
 <script>
     export default {
+        
         props: ['user'],
         data: function(){
             return {

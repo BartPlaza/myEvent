@@ -26,6 +26,7 @@ class EventController extends Controller
     	$event->description = $request->input('description');
     	$event->start_date = $request->input('date');
     	$event->start_time = $request->input('time');
+    	$event->place_id = $request->input('place');
     	$event->save();
 
     	return back();

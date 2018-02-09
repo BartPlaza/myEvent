@@ -31,7 +31,7 @@
 	<div class="event-info col-xs-12">
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-map-marker"></i>
-		<span><h2>Location</h2><p>Adress</p></span>
+		<span><h2>Location</h2><p id="event-location">Adress</p></span>
 		</div>
 		<div class="event-info-section col-md-3 col-sm-6">
 		<i class="fa fa-users"></i>
@@ -60,5 +60,8 @@
 			</div>
 		</div>
 	</div>
+	@if($event->place_id != '')
+	<google-map  place-id="{{$event->place_id}}"></google-map>
+	@endif
 </div>
 @endsection

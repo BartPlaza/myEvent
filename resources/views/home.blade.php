@@ -11,7 +11,7 @@
             <a href="#" :class="{'active' : elements[4].active}" v-on:click="showTab(4)">Another tab 2</a>
         </div>
         <div class="dashboard col-md-10 col-sm-10 col-xs-10">
-            <div v-show="elements[0].active">
+            <div v-show="elements[0].active" >
                 <form class="col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 dashboard-content" action="/event/create" method="POST">
                     {{csrf_field()}}
@@ -30,6 +30,10 @@
                     <div class="form-group col-lg-12 col-sm-12">
                         <label for="description">Description</label>
                         <textarea id="description" name="description" class="form-control" rows="5" placeholder="Event description" required></textarea>
+                    </div>
+                    <div class="form-group col-lg-12 col-sm-12">
+                        <label for="place">Place</label>
+                        <find-place></find-place>
                     </div>
                     <div class="form-group col-lg-12 col-sm-12">
                         <button type="submit" class="btn btn-primary">Create</button>
