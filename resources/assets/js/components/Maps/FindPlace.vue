@@ -1,11 +1,8 @@
 <template>
 	<div >
-	<input type="hidden" :value="placeId" id="place" name="place" required>
-	<input id="findMapInput" class="form-control" @focus="showMap" required>
-	<div id="findMap">
-	
-		
-	</div>
+		<input type="hidden" :value="placeId" id="place" name="place" required>
+		<input id="findMapInput" class="form-control" @focus="showMap" required>
+		<div id="findMap"></div>
 	</div>
 </template>
 <script>
@@ -44,6 +41,7 @@
 
 				autocomplete.addListener('place_changed', function(){
 					vc.placeId = autocomplete.getPlace().place_id;
+					eventBus.$emit('updateLocation', vc.placeId);
 					let geocoder = new google.maps.Geocoder;
 					geocoder.geocode({'placeId':vc.placeId}, function(result){
 						vc.map.setCenter(result[0].geometry.location);

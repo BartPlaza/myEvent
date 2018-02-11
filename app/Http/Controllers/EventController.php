@@ -11,7 +11,8 @@ class EventController extends Controller
 {
     public function showAll(User $user) 
     {
-    	return $user->events;
+    	$events = $user->events;
+    	return view('dashboard.dashboard_events', compact('events'));
     }
 
     public function show(Event $event)

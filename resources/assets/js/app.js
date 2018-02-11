@@ -19,8 +19,14 @@ Vue.component('workspace-navigation', require('./components/WorkspaceNavigation.
 Vue.component('my-events', require('./components/MyEvents.vue'));
 Vue.component('show-place', require('./components/Maps/ShowPlace.vue'));
 Vue.component('find-place', require('./components/Maps/FindPlace.vue'));
-Vue.component('edit-place', require('./components/Maps/EditPlace.vue'));
+Vue.component('events-component', require('./components/Events/EventController.vue'));
+Vue.component('events-editor', require('./components/Events/EventEditor.vue'));
+Vue.component('message-component', require('./components/Message.vue'));
+
+
+window.eventBus = new Vue();
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });
+
