@@ -52,10 +52,29 @@
 				alert('ok');
 			},
 			updateEvent(){
-				if(this.compareItems()){
-
+				let el = this;
+				if(this.compareItems() == true){
+					axios({
+                        method: 'put',
+                        url: '/event/'+this.event.id+'/edit',
+                        data: {
+                        	event: el.tempEvent
+                        	}
+                        })
+                        .then(function (response) {
+                        	el.hideModal();
+                        	setTimeout(function(){
+                        		window.location.reload(function(){
+                        			/*eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
+                        			alert('ok');*/
+                        		});
+                    		},500);	
+                        })
+                        .catch(function (error) {
+                            eventBus.$emit('showMessage','Sorry, try again later.', 'alert-danger');
+                        });
 				}else {
-					eventBus.$emit('showMessage','Nothing has changed', 'alert-danger');
+					eventBus.$emit('showMessage','Nothing has changed.', 'alert-danger');
 				}
 			},
 			compareItems(){
@@ -67,8 +86,8 @@
 					if(el.tempEvent[prop] != el.event[prop]){
 						value = true;
 					}
-				})
-				console.log(value);
+				});
+				return value;
 			},
 			hideModal: function(){
 				eventBus.$emit('hideModal');

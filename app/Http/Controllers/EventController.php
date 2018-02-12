@@ -35,12 +35,13 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
-    	$event->title = $request->input('eventTitle');
-    	$event->description = $request->input('eventDescription');
-    	$event->start_date = $request->input('eventDate');
-    	$event->start_time = $request->input('eventTime');
+    	$event->title = $request->event['title'];
+    	$event->description = $request->event['description'];
+    	$event->start_date = $request->event['start_date'];
+    	$event->start_time = $request->event['start_time'];
+    	$event->place_id = $request->event['place_id'];
     	$event->save();
-        return $event->id;
+        return $event->owner_id;
     }
 
     public function delete(Event $event){

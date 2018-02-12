@@ -11,9 +11,6 @@
 				this.showModal = true;
 				this.editingEvent = event;
 			},
-			updatePlaceId(id){
-				alert(id);
-			},
 			deleteEvent(id){
 				let el = this;
                 if (confirm("Do you really want to delete this event?")) {
@@ -41,6 +38,9 @@
 			let el = this;
 			eventBus.$on('hideModal', function(){
 				el.showModal = false;
+			});
+			eventBus.$on('updateElement', function(id, event){
+				el.updateEvent(id, event);
 			});
 		}
 	}

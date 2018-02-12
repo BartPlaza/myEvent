@@ -28,16 +28,15 @@
 				this.show = true;
 					setTimeout(function(){
 					el.show = false;
-						
-					},3000);
-					el.resetMessage();	
+					//el.resetMessage();		
+					},3000);		
 			},
 			resetMessage: function(){
+				let el = this;
 				setTimeout(function(){
-					//el.message = '';
-					//el.type = '';
-					alert('reseted');
-					},1500);
+					el.message = '';
+					el.type = '';
+					},1000);
 			}
 		}
 	}
