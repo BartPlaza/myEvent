@@ -9,13 +9,8 @@
       <th scope="col" class="text-center">Actions</th>
     </tr>
   </thead>
-  <tbody v-for="event in events">
-    <event-row :event="event"></event-row>
-  	
-  	
-  	
-
-
+  <tbody v-for="(event, index) in events">
+    <event-row :event="event" :iterator="index+1"></event-row>
   </tbody>
 </table>
 </template>

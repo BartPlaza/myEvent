@@ -1,6 +1,6 @@
 <template>
 	<tr>
-      <th scope="row">1</th>
+      <th scope="row">{{iterator}}</th>
       <td class="event_title">{{eventData.title}}</td>
       <td class="no-wrap event_start_date">{{eventData.start_date}}</td>
       <td class="event_start_time">{{eventData.start_time}}</td>
@@ -20,7 +20,7 @@
 </template>
 <script>
 	export default {
-		props: ['event'],
+		props: ['event', 'iterator'],
 		data: function(){
 			return {
 				eventData: this.event

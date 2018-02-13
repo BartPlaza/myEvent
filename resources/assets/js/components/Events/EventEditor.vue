@@ -5,7 +5,7 @@
 			<form class="dashboard-content col-lg-12">
 		        <div class="form-group col-lg-6 col-sm-12">
 		            <label for="title">Title</label>
-		            <input name="title" id="title" type="text" class="form-control" v-model="tempEvent.title" required>
+		            <input required  name="title" id="title" type="text" class="form-control" v-model="tempEvent.title" >
 		        </div>
 		        <div class="form-group col-lg-3 col-sm-6">
 		            <label for="date">Date</label>
@@ -24,8 +24,8 @@
 		            <find-place></find-place>
 		        </div>
 		        <div class="form-group col-lg-12 col-sm-12">
-		            <div class="btn btn-primary" v-on:click="updateEvent">Update</div>
-		            <div class="btn btn-default" v-on:click="closeModal">Cancel</div>
+		            <button type="submit" class="btn btn-primary" v-on:click="updateEvent">Update</button>
+		            <button class="btn btn-default" v-on:click="closeModal">Cancel</button>
 		        </div>
 			</form>
 		</div>
@@ -71,10 +71,9 @@
                         	}
                         })
                         .then(function (response) {
+                    		eventBus.$emit('updateRow', el.tempEvent, response.data);
                     		el.closeModal();
                     		eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
-                    		eventBus.$emit('updateRow', el.tempEvent, response.data);
-                    		eventBus.$emit('clearPlace');
                         })
                         .catch(function (error) {
                             eventBus.$emit('showMessage','Sorry, try again later.', 'alert-danger');
@@ -90,6 +89,9 @@
 				let props = Object.getOwnPropertyNames(this.tempEvent);
 				props.shift();
 				props.forEach(function(prop){
+					if(el.tempEvent[prop] == ''){
+						return false;
+					}
 					if(el.tempEvent[prop] != el.event[prop]){
 						value = true;
 					}
