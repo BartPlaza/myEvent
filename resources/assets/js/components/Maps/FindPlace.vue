@@ -55,6 +55,16 @@
 				});
 			});	
 		},
+		created: function(){
+			let el = this;
+			eventBus.$on('clearPlace', function(){
+				el.placeId = '';
+				document.getElementById('findMapInput').value = '';
+			});
+			eventBus.$on('showModal', function(event){
+				el.placeId = event.place_id;
+			});
+		},
 		methods: {
 			showMap: function(){
 				document.getElementById('findMap').style.height = '250px';

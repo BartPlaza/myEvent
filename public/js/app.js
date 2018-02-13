@@ -1611,7 +1611,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
@@ -1641,7 +1641,9 @@ Vue.component('show-place', __webpack_require__(48));
 Vue.component('find-place', __webpack_require__(54));
 Vue.component('events-component', __webpack_require__(59));
 Vue.component('events-editor', __webpack_require__(63));
-Vue.component('message-component', __webpack_require__(66));
+Vue.component('event-row', __webpack_require__(66));
+Vue.component('events-table', __webpack_require__(84));
+Vue.component('message-component', __webpack_require__(67));
 
 window.eventBus = new Vue();
 
@@ -44165,6 +44167,16 @@ __WEBPACK_IMPORTED_MODULE_0_google_maps___default.a.LIBRARIES = ['places', 'geom
 			});
 		});
 	},
+	created: function created() {
+		var el = this;
+		eventBus.$on('clearPlace', function () {
+			el.placeId = '';
+			document.getElementById('findMapInput').value = '';
+		});
+		eventBus.$on('showModal', function (event) {
+			el.placeId = event.place_id;
+		});
+	},
 	methods: {
 		showMap: function showMap() {
 			document.getElementById('findMap').style.height = '250px';
@@ -44353,6 +44365,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(87)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(64)
@@ -44361,7 +44377,7 @@ var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -44429,13 +44445,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		event: {
-			type: Object,
-			required: true
-		}
+	data: function data() {
+		return {
+			event: {},
+			show: false
+		};
 	},
 	computed: {
 		tempEvent: function tempEvent() {
@@ -44449,11 +44473,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		eventBus.$on('updateLocation', function (id) {
 			el.tempEvent.place_id = id;
 		});
+		eventBus.$on('showModal', function (event) {
+			el.event = event;
+			el.show = true;
+		});
 	},
 	methods: {
-		test: function test() {
-			alert('ok');
-		},
 		updateEvent: function updateEvent() {
 			var el = this;
 			if (this.compareItems() == true) {
@@ -44464,15 +44489,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						event: el.tempEvent
 					}
 				}).then(function (response) {
-					el.hideModal();
-					setTimeout(function () {
-						window.location.reload(function () {
-							/*eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
-       alert('ok');*/
-						});
-					}, 500);
+					el.closeModal();
+					eventBus.$emit('showMessage', 'Event successfully updated!', 'alert-success');
+					eventBus.$emit('updateRow', el.tempEvent, response.data);
+					eventBus.$emit('clearPlace');
 				}).catch(function (error) {
 					eventBus.$emit('showMessage', 'Sorry, try again later.', 'alert-danger');
+					console.log(error);
 				});
 			} else {
 				eventBus.$emit('showMessage', 'Nothing has changed.', 'alert-danger');
@@ -44490,9 +44513,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 			return value;
 		},
-
-		hideModal: function hideModal() {
-			eventBus.$emit('hideModal');
+		closeModal: function closeModal() {
+			this.show = false;
+			this.event = {};
+			eventBus.$emit('clearPlace');
 		}
 	}
 });
@@ -44505,151 +44529,182 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      staticClass: "dashboard-content col-lg-12",
-      attrs: { action: "/event/create", method: "POST" }
-    },
-    [
-      _c("div", { staticClass: "form-group col-lg-6 col-sm-12" }, [
-        _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.tempEvent.title,
-              expression: "tempEvent.title"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { name: "title", id: "title", type: "text", required: "" },
-          domProps: { value: _vm.tempEvent.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.tempEvent, "title", $event.target.value)
-            }
+  return _c("transition", { attrs: { name: "fade" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show,
+            expression: "show"
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-lg-3 col-sm-6" }, [
-        _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.tempEvent.start_date,
-              expression: "tempEvent.start_date"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "date", name: "date", type: "date", required: "" },
-          domProps: { value: _vm.tempEvent.start_date },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.tempEvent, "start_date", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-lg-3 col-sm-6" }, [
-        _c("label", { attrs: { for: "time" } }, [_vm._v("Start time")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.tempEvent.start_time,
-              expression: "tempEvent.start_time"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { name: "time", id: "time", type: "time", required: "" },
-          domProps: { value: _vm.tempEvent.start_time },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.tempEvent, "start_time", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-lg-12 col-sm-12" }, [
-        _c("label", { attrs: { for: "description" } }, [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.tempEvent.description,
-              expression: "tempEvent.description"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            id: "description",
-            name: "description",
-            rows: "5",
-            placeholder: "Event description",
-            required: ""
-          },
-          domProps: { value: _vm.tempEvent.description },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.tempEvent, "description", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-group col-lg-12 col-sm-12" },
-        [
-          _c("label", { attrs: { for: "place" } }, [
-            _vm._v("New place (leave empty if not changed)")
-          ]),
-          _vm._v(" "),
-          _c("find-place")
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-lg-12 col-sm-12" }, [
-        _c(
-          "div",
-          { staticClass: "btn btn-primary", on: { click: _vm.updateEvent } },
-          [_vm._v("Update")]
-        ),
+        staticClass: "modal_window"
+      },
+      [
+        _c("div", { staticClass: "modal_well" }, [
+          _c("form", { staticClass: "dashboard-content col-lg-12" }, [
+            _c("div", { staticClass: "form-group col-lg-6 col-sm-12" }, [
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tempEvent.title,
+                    expression: "tempEvent.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  name: "title",
+                  id: "title",
+                  type: "text",
+                  required: ""
+                },
+                domProps: { value: _vm.tempEvent.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tempEvent, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-lg-3 col-sm-6" }, [
+              _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tempEvent.start_date,
+                    expression: "tempEvent.start_date"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "date", name: "date", type: "date", required: "" },
+                domProps: { value: _vm.tempEvent.start_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tempEvent, "start_date", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-lg-3 col-sm-6" }, [
+              _c("label", { attrs: { for: "time" } }, [_vm._v("Start time")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tempEvent.start_time,
+                    expression: "tempEvent.start_time"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { name: "time", id: "time", type: "time", required: "" },
+                domProps: { value: _vm.tempEvent.start_time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tempEvent, "start_time", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-lg-12 col-sm-12" }, [
+              _c("label", { attrs: { for: "description" } }, [
+                _vm._v("Description")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tempEvent.description,
+                    expression: "tempEvent.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "description",
+                  name: "description",
+                  rows: "5",
+                  placeholder: "Event description",
+                  required: ""
+                },
+                domProps: { value: _vm.tempEvent.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tempEvent, "description", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group col-lg-12 col-sm-12" },
+              [
+                _c("label", { attrs: { for: "place" } }, [
+                  _vm._v("New place (leave empty if not changed)")
+                ]),
+                _vm._v(" "),
+                _c("find-place")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-lg-12 col-sm-12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.updateEvent }
+                },
+                [_vm._v("Update")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.closeModal }
+                },
+                [_vm._v("Cancel")]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "btn btn-default", on: { click: _vm.hideModal } },
-          [_vm._v("Cancel")]
-        )
-      ])
-    ]
-  )
+        _c("i", {
+          staticClass: "far fa-times-circle modal_close",
+          on: { click: _vm.closeModal }
+        })
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -44666,15 +44721,62 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Events\\EventRow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d7779e88", Component.options)
+  } else {
+    hotAPI.reload("data-v-d7779e88", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(67)
+  __webpack_require__(68)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(70)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(71)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44713,13 +44815,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(69);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -44739,7 +44841,7 @@ if(false) {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -44753,7 +44855,7 @@ exports.push([module.i, "\n.message[data-v-37652940]{\n\tposition: fixed;\n\n\tb
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44802,7 +44904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44839,10 +44941,330 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['event'],
+	data: function data() {
+		return {
+			eventData: this.event
+		};
+	},
+	methods: {
+		editEvent: function editEvent() {
+			eventBus.$emit('showModal', this.event);
+		},
+		deleteEvent: function deleteEvent(id) {
+			var el = this;
+			if (confirm("Do you really want to delete this event?")) {
+				axios({
+					method: 'delete',
+					url: '/event/' + id + '/delete'
+				}).then(function (response) {
+					el.deleteItem(id);
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		deleteItem: function deleteItem(id) {
+			var child = document.querySelector("[event_id='" + id + "']");
+			child.style.opacity = "0";
+			setTimeout(function () {
+				child.parentNode.removeChild(child);
+			}, 1000);
+		}
+	},
+	created: function created() {
+		var el = this;
+		eventBus.$on('updateRow', function (event, id) {
+			if (el.event.id == id) {
+				el.eventData = event;
+			}
+		});
+	}
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", [
+    _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+    _vm._v(" "),
+    _c("td", { staticClass: "event_title" }, [
+      _vm._v(_vm._s(_vm.eventData.title))
+    ]),
+    _vm._v(" "),
+    _c("td", { staticClass: "no-wrap event_start_date" }, [
+      _vm._v(_vm._s(_vm.eventData.start_date))
+    ]),
+    _vm._v(" "),
+    _c("td", { staticClass: "event_start_time" }, [
+      _vm._v(_vm._s(_vm.eventData.start_time))
+    ]),
+    _vm._v(" "),
+    _c("td", { staticClass: "text-center no-wrap" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary btn-sm",
+          attrs: { href: "/event/" + _vm.eventData.id }
+        },
+        [_vm._v("Show\n        ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "btn btn-warning btn-sm",
+          on: {
+            click: function($event) {
+              _vm.editEvent(_vm.eventData.id)
+            }
+          }
+        },
+        [_vm._v("Edit\n        ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "btn btn-danger btn-sm",
+          on: {
+            click: function($event) {
+              _vm.deleteEvent(_vm.eventData.id)
+            }
+          }
+        },
+        [_vm._v("Delete\n        ")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d7779e88", module.exports)
+  }
+}
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Events\\EventsTable.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f5f7a2ee", Component.options)
+  } else {
+    hotAPI.reload("data-v-f5f7a2ee", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['events']
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "table",
+    { staticClass: "table" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.events, function(event) {
+        return _c("tbody", [_c("event-row", { attrs: { event: event } })], 1)
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Time")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Actions")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f5f7a2ee", module.exports)
+  }
+}
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(88);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("598f2904", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3dafd00a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EventEditor.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3dafd00a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EventEditor.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*Animations*/\n.fade-enter-active, .fade-leave-active {\r\n  -webkit-transition: opacity .5s;\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

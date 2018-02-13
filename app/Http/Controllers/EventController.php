@@ -41,7 +41,7 @@ class EventController extends Controller
     	$event->start_time = $request->event['start_time'];
     	$event->place_id = $request->event['place_id'];
     	$event->save();
-        return $event->owner_id;
+        return $event->id;
     }
 
     public function delete(Event $event){

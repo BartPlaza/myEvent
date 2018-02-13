@@ -1,37 +1,45 @@
 <template>
-	<form class="dashboard-content col-lg-12" action="/event/create" method="POST">
-        <div class="form-group col-lg-6 col-sm-12">
-            <label for="title">Title</label>
-            <input name="title" id="title" type="text" class="form-control" v-model="tempEvent.title" required>
-        </div>
-        <div class="form-group col-lg-3 col-sm-6">
-            <label for="date">Date</label>
-            <input id="date" name="date" type="date" class="form-control" v-model="tempEvent.start_date" required>
-        </div>
-        <div class="form-group col-lg-3 col-sm-6">
-            <label for="time">Start time</label>
-            <input name="time" id="time" type="time" class="form-control" v-model="tempEvent.start_time" required>
-        </div>
-        <div class="form-group col-lg-12 col-sm-12">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" rows="5" placeholder="Event description" v-model="tempEvent.description" required></textarea>
-        </div>
-        <div class="form-group col-lg-12 col-sm-12">
-            <label for="place">New place (leave empty if not changed)</label>
-            <find-place></find-place>
-        </div>
-        <div class="form-group col-lg-12 col-sm-12">
-            <div class="btn btn-primary" v-on:click="updateEvent">Update</div>
-            <div class="btn btn-default" v-on:click="hideModal">Cancel</div>
-        </div>
-	</form>
+	<transition name="fade">
+	<div class="modal_window" v-show="show" >
+		<div class="modal_well" >
+			<form class="dashboard-content col-lg-12">
+		        <div class="form-group col-lg-6 col-sm-12">
+		            <label for="title">Title</label>
+		            <input name="title" id="title" type="text" class="form-control" v-model="tempEvent.title" required>
+		        </div>
+		        <div class="form-group col-lg-3 col-sm-6">
+		            <label for="date">Date</label>
+		            <input id="date" name="date" type="date" class="form-control" v-model="tempEvent.start_date" required>
+		        </div>
+		        <div class="form-group col-lg-3 col-sm-6">
+		            <label for="time">Start time</label>
+		            <input name="time" id="time" type="time" class="form-control" v-model="tempEvent.start_time" required>
+		        </div>
+		        <div class="form-group col-lg-12 col-sm-12">
+		            <label for="description">Description</label>
+		            <textarea id="description" name="description" class="form-control" rows="5" placeholder="Event description" v-model="tempEvent.description" required></textarea>
+		        </div>
+		        <div class="form-group col-lg-12 col-sm-12">
+		            <label for="place">New place (leave empty if not changed)</label>
+		            <find-place></find-place>
+		        </div>
+		        <div class="form-group col-lg-12 col-sm-12">
+		            <div class="btn btn-primary" v-on:click="updateEvent">Update</div>
+		            <div class="btn btn-default" v-on:click="closeModal">Cancel</div>
+		        </div>
+			</form>
+		</div>
+		<i class="far fa-times-circle modal_close" v-on:click="closeModal"></i>
+	</div>
+	</transition>
+	
 </template>
 <script>
 	export default{
-		props: {
-			event: {
-				type: Object,
-				required: true
+		data: function(){
+			return {
+				event: {},
+				show: false
 			}
 		},
 		computed: {
@@ -46,11 +54,12 @@
 			eventBus.$on('updateLocation', function(id){
 				el.tempEvent.place_id = id;
 			});
+			eventBus.$on('showModal', function(event){
+				el.event = event;
+				el.show = true;
+			});
 		},
 		methods: {
-			test(){
-				alert('ok');
-			},
 			updateEvent(){
 				let el = this;
 				if(this.compareItems() == true){
@@ -62,16 +71,14 @@
                         	}
                         })
                         .then(function (response) {
-                        	el.hideModal();
-                        	setTimeout(function(){
-                        		window.location.reload(function(){
-                        			/*eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
-                        			alert('ok');*/
-                        		});
-                    		},500);	
+                    		el.closeModal();
+                    		eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
+                    		eventBus.$emit('updateRow', el.tempEvent, response.data);
+                    		eventBus.$emit('clearPlace');
                         })
                         .catch(function (error) {
                             eventBus.$emit('showMessage','Sorry, try again later.', 'alert-danger');
+                            console.log(error);
                         });
 				}else {
 					eventBus.$emit('showMessage','Nothing has changed.', 'alert-danger');
@@ -89,9 +96,20 @@
 				});
 				return value;
 			},
-			hideModal: function(){
-				eventBus.$emit('hideModal');
+			closeModal(){
+				this.show = false;
+				this.event = {};
+				eventBus.$emit('clearPlace');
 			}
 		}
 	}
 </script>
+<style>
+/*Animations*/
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

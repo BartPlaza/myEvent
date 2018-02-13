@@ -21,6 +21,8 @@ Vue.component('show-place', require('./components/Maps/ShowPlace.vue'));
 Vue.component('find-place', require('./components/Maps/FindPlace.vue'));
 Vue.component('events-component', require('./components/Events/EventController.vue'));
 Vue.component('events-editor', require('./components/Events/EventEditor.vue'));
+Vue.component('event-row', require('./components/Events/EventRow.vue'));
+Vue.component('events-table', require('./components/Events/EventsTable.vue'));
 Vue.component('message-component', require('./components/Message.vue'));
 
 
