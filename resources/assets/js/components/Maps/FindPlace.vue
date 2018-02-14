@@ -1,7 +1,7 @@
 <template>
 	<div >
 		<input type="hidden" :value="placeId" id="place" name="place" required>
-		<input id="findMapInput" class="form-control" @focus="showMap" required>
+		<input id="findMapInput" class="form-control" @focus="showMap" :value="location" required>
 		<div id="findMap"></div>
 	</div>
 </template>
@@ -13,7 +13,34 @@
 		data: function(){
 			return {
 				placeId: '',
-				map: ''
+				map: '',
+				marker: '',
+				infowindow: '',
+				location: '',
+				temp: ''
+			}
+		},
+		watch: {
+			placeId: function(){
+				let el = this;
+				if(this.placeId != ''){
+					let geocoder = new google.maps.Geocoder;
+					geocoder.geocode({'placeId':this.placeId}, function(result){
+						el.showMap();
+						el.location = result[0].formatted_address;
+						el.map.setCenter(result[0].geometry.location);
+						el.marker.setPlace({
+								placeId: el.placeId,
+								location: result[0].geometry.location
+							});
+						el.marker.setMap(el.map);
+						el.infowindow.setContent(result[0].formatted_address);
+						el.infowindow.open(el.map, el.marker);
+					});
+				}else {
+					el.marker.setMap(null);
+					el.infowindow.close();
+				}
 			}
 		},
 		mounted: function(){
@@ -26,10 +53,10 @@
 					center: {lat: 50.04, lng: 19.86}
 				});
 
-				var marker = new google.maps.Marker({
+				vc.marker = new google.maps.Marker({
 					map:vc.map
 				});
-				var infowindow = new google.maps.InfoWindow();
+				vc.infowindow = new google.maps.InfoWindow();
 
 				var input = document.getElementById('findMapInput');
 
@@ -42,16 +69,6 @@
 				autocomplete.addListener('place_changed', function(){
 					vc.placeId = autocomplete.getPlace().place_id;
 					eventBus.$emit('updateLocation', vc.placeId);
-					let geocoder = new google.maps.Geocoder;
-					geocoder.geocode({'placeId':vc.placeId}, function(result){
-						vc.map.setCenter(result[0].geometry.location);
-						marker.setPlace({
-							placeId: vc.placeId,
-							location: result[0].geometry.location
-						});
-						infowindow.setContent(result[0].formatted_address);
-						infowindow.open(vc.map, marker);
-					});
 				});
 			});	
 		},
@@ -59,7 +76,7 @@
 			let el = this;
 			eventBus.$on('clearPlace', function(){
 				el.placeId = '';
-				document.getElementById('findMapInput').value = '';
+				el.location = '';
 			});
 			eventBus.$on('showModal', function(event){
 				el.placeId = event.place_id;

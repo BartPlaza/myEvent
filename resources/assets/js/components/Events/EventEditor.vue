@@ -20,12 +20,12 @@
 		            <textarea id="description" name="description" class="form-control" rows="5" placeholder="Event description" v-model="tempEvent.description" required></textarea>
 		        </div>
 		        <div class="form-group col-lg-12 col-sm-12">
-		            <label for="place">New place (leave empty if not changed)</label>
+		            <label for="place">Place</label>
 		            <find-place></find-place>
 		        </div>
 		        <div class="form-group col-lg-12 col-sm-12">
-		            <button type="submit" class="btn btn-primary" v-on:click="updateEvent">Update</button>
-		            <button class="btn btn-default" v-on:click="closeModal">Cancel</button>
+		            <div class="btn btn-primary" v-on:click="updateEvent">Update</div>
+		            <button type="reset" class="btn btn-default" v-on:click="closeModal">Cancel</button>
 		        </div>
 			</form>
 		</div>
@@ -60,7 +60,7 @@
 			});
 		},
 		methods: {
-			updateEvent(){
+			updateEvent(){;
 				let el = this;
 				if(this.compareItems() == true){
 					axios({
@@ -72,8 +72,8 @@
                         })
                         .then(function (response) {
                     		eventBus.$emit('updateRow', el.tempEvent, response.data);
-                    		el.closeModal();
                     		eventBus.$emit('showMessage','Event successfully updated!', 'alert-success');
+                    		el.closeModal();
                         })
                         .catch(function (error) {
                             eventBus.$emit('showMessage','Sorry, try again later.', 'alert-danger');

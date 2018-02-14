@@ -28,7 +28,7 @@
 		},
 		methods: {
 			editEvent(){
-				eventBus.$emit('showModal', this.event);
+				eventBus.$emit('showModal', this.eventData);
 			},
 			deleteEvent(id){
 				let el = this;

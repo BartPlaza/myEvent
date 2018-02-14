@@ -6,13 +6,34 @@
 
 //Dashboard menu
 
-.dashboard_menu{
-	width: 180px;
+.dashboard_navigation{
 	background-color: $main-font;
 	color: white;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	@media #{$small} {
+		margin-left: -180px;
+	}
+
+	
+}
+.dashboard_mobile{
+	font-size: 25px;
+	align-self: center;
+	padding: 5px;
+	display: none;
+
+	@media #{$small} {
+		display: block;
+	}
+}
+
+.dashboard_menu{
+	width: 180px;
 	display: flex;
 	flex-direction: column;
-	padding: 0;
+	
 }
 
 .dashboard_menu > a{
