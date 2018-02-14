@@ -1,18 +1,8 @@
-<dashboard-navigation inline-template>
-	<div class="dashboard_navigation" :class="{'show': show}">
-		<div class="dashboard_menu"> 
-		    <a href="/events/create">New event</a>
-		    <a href="/{{Auth::id()}}/events">My events</a>
-		</div>
-		<div class="dashboard_mobile" v-on:click="show = !show">
-			<i class="fas fa-arrow-right"></i>
-		</div>
+<div class="dashboard_menu">
+	<div class="dashboard_menu_item">
+    	<a href="/events/create" @if((isset($menuItem)) && ($menuItem == 0)) class="active" @endif><i class="fas fa-plus"></i></a><span>New event</span>
 	</div>
-</dashboard-navigation>
-<style scoped>
-	.show{
-		margin-left: 0;
-	}
-
-	
-</style>
+	<div class="dashboard_menu_item">
+    	<a href="/{{Auth::id()}}/events" @if((isset($menuItem)) && ($menuItem == 1)) class="active" @endif><i class="fas fa-list-ul"></i></a><span>My events</span>
+    </div>
+</div>

@@ -14,12 +14,6 @@ class EventController extends Controller
 		$this->middleware('auth');
 	}
 
-    public function showAll(User $user) 
-    {
-    	$events = $user->events;
-    	return view('dashboard.dashboard_events', compact('events'));
-    }
-
     public function show(Event $event)
     {
     	return view('event', compact('event'));
