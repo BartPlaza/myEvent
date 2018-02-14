@@ -16,7 +16,8 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-    	return view('event', compact('event'));
+    	$comments = $event->comments;
+    	return view('event', compact('event', 'comments'));
     }
 
     public function store(Request $request){

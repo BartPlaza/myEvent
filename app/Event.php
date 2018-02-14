@@ -12,6 +12,11 @@ class Event extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function comments()
+    {
+    	return $this->hasMany('App\Comment');
+    }
+
     public function startDate() {
     	$date = Carbon::parse($this->start_date);
     	return $date->day.' '.$date->format('F');

@@ -55,9 +55,7 @@
 		</div>
 		<div class="event-panel panel col-md-6 col-sm-12">
 			<div class="panel-heading">Live chat</div>
-			<div class="panel-body">
-			   
-			</div>
+			<chat-wrapper :comments="{{$comments}}"></chat-wrapper>
 		</div>
 	</div>
 	@if($event->place_id != '')

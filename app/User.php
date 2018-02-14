@@ -13,6 +13,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Event', 'owner_id');
     }
 
+     public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
 
     use Notifiable;
 

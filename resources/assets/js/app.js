@@ -21,6 +21,8 @@ Vue.component('events-editor', require('./components/Events/EventEditor.vue'));
 Vue.component('event-row', require('./components/Events/EventRow.vue'));
 Vue.component('events-table', require('./components/Events/EventsTable.vue'));
 Vue.component('message-component', require('./components/Message.vue'));
+Vue.component('chat-wrapper', require('./components/Chat/ChatWrapper.vue'));
+Vue.component('chat-comment', require('./components/Chat/ChatComment.vue'));
 
 
 window.eventBus = new Vue();
