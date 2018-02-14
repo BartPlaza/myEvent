@@ -12,15 +12,15 @@
     </div>
     <div class="possibilities col-sm-12">
         <div class="possibility col-sm-12 col-md-4">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <i class="far fa-calendar"></i>
             <p>Create your own event</p>
         </div>
         <div class="possibility col-sm-12 col-md-4">
-            <i class="fa fa-users" aria-hidden="true"></i>
+            <i class="fas fa-users"></i>
             <p>Invite your frends</p>
         </div>
         <div class="possibility col-sm-12 col-md-4">
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <i class="far fa-envelope"></i>
             <p>Get notifications</p>
         </div>
     </div>

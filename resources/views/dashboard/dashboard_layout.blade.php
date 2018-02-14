@@ -7,4 +7,5 @@
 			@yield('dashboard_content')
 		</div>
 	</div>
+	<message-component></message-component>
 @endsection
