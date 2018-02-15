@@ -44968,7 +44968,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.chat_wrapper {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: column;\r\n\t        flex-direction: column;\n}\n.comment_add {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\n}\n.comment_add > textarea {\r\n\twidth: 100%;\n}\n.comment_add > button:hover {\r\n\tcolor: white;\n}\n.comment_add > button {\r\n\tbackground-color: #e54242;\r\n\tcolor: white;\r\n\tborder-radius: 0 5px 5px 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat_wrapper {\r\n\t\r\n\t-webkit-box-orient: vertical;\r\n\t\r\n\t-webkit-box-direction: normal;\r\n\t\r\n\t    -ms-flex-direction: column;\r\n\t\r\n\t        flex-direction: column;\r\n\tmax-height: 280px;\r\n\toverflow-y: auto;\n}\n.comment_add {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\tmargin-top: 20px;\n}\n.comment_add > textarea {\r\n\twidth: 100%;\n}\n.comment_add > button:hover {\r\n\tcolor: white;\n}\n.comment_add > button {\r\n\tbackground-color: #e54242;\r\n\tcolor: white;\r\n\tborder-radius: 0 5px 5px 0;\n}\r\n", ""]);
 
 // exports
 
@@ -44993,7 +44993,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['comments']
+	props: ['comments'],
+	mounted: function mounted() {
+		var elem = document.querySelector(".chat_wrapper");
+		console.log(elem.scrollTop);
+		console.log(elem.offsetHeight);
+		elem.scrollTo(0, elem.offsetHeight + 100);
+	}
 });
 
 /***/ }),

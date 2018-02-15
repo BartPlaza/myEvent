@@ -12,19 +12,28 @@
 
 <script>
 	export default{
-		props: ['comments']
+		props: ['comments'],
+		mounted: function(){
+			let elem = document.querySelector(".chat_wrapper")
+			console.log(elem.scrollTop);
+			console.log(elem.offsetHeight);
+			elem.scrollTo(0,elem.offsetHeight+100);
+		}
 	}
 </script>
 
 <style>
 
 .chat_wrapper {
-	display: flex;
+	
 	flex-direction: column;
+	max-height: 280px;
+	overflow-y: auto;
 }
 
 .comment_add {
 	display: flex;
+	margin-top: 20px;
 }
 
 .comment_add > textarea {
