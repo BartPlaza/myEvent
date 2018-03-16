@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Event;
+use App\Comment;
 
 class EventController extends Controller
 {
 
-	public function __construct(){
-		$this->middleware('auth');
-	}
+	
 
     public function show(Event $event)
     {

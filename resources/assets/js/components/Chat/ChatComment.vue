@@ -5,6 +5,7 @@
 		</div>
 		<span></span>
 		<div class="comment_body">
+			<span><b>{{comment.user_name}}:</b></span></br>
 			<span>{{comment.body}}</span></br>
 			<span>{{comment.created_at}}</span>
 		</div>

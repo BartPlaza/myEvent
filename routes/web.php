@@ -23,6 +23,8 @@ Route::get('/{user}/events', 'DashboardController@events')->name('myEvents');
 
 Route::post('/event/create', 'EventController@store');
 Route::get('/event/{event}', 'EventController@show');
+Route::post('/event/{event}/chat', 'CommentController@add');
+Route::get('/event/{event}/chat', 'CommentController@get');
 Route::put('/event/{event}/edit', 'EventController@update');
 Route::delete('/event/{event}/delete', 'EventController@delete');
 

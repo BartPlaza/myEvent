@@ -44968,7 +44968,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.chat_wrapper {\r\n\t\r\n\t-webkit-box-orient: vertical;\r\n\t\r\n\t-webkit-box-direction: normal;\r\n\t\r\n\t    -ms-flex-direction: column;\r\n\t\r\n\t        flex-direction: column;\r\n\tmax-height: 280px;\r\n\toverflow-y: auto;\n}\n.comment_add {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\tmargin-top: 20px;\n}\n.comment_add > textarea {\r\n\twidth: 100%;\n}\n.comment_add > button:hover {\r\n\tcolor: white;\n}\n.comment_add > button {\r\n\tbackground-color: #e54242;\r\n\tcolor: white;\r\n\tborder-radius: 0 5px 5px 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat_wrapper {\r\n\t\r\n\t-webkit-box-orient: vertical;\r\n\t\r\n\t-webkit-box-direction: normal;\r\n\t\r\n\t    -ms-flex-direction: column;\r\n\t\r\n\t        flex-direction: column;\r\n\tmax-height: 280px;\r\n\toverflow-y: auto;\n}\n.comment_add {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\tmargin-top: 20px;\n}\n.comment_add > textarea {\r\n\twidth: 100%;\n}\n.comment_add > button:hover {\r\n\tcolor: white;\n}\n.comment_add > button {\r\n\tbackground-color: #e54242;\r\n\tcolor: white;\r\n\tborder-radius: 0 5px 5px 0;\n}\n#chat_name{\r\n\tmargin-right: 20px;\n}\n#chat_comment{\r\n\tmargin-right: 20px;\n}\n.chat_button:focus{\r\n\tcolor: white;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -44991,14 +44991,77 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['comments'],
+	props: ['comments', 'user', 'eventId'],
+	data: function data() {
+		return {
+			commentsAll: this.comments,
+			comment: '',
+			author: ''
+		};
+	},
+	computed: {
+		userId: function userId() {
+			if (this.user !== undefined) {
+				return this.user.id;
+			} else {
+				return '';
+			}
+		},
+		userName: function userName() {
+			if (this.user !== undefined) {
+				return this.user.name;
+			} else {
+				return this.author;
+			}
+		}
+	},
 	mounted: function mounted() {
-		var elem = document.querySelector(".chat_wrapper");
-		console.log(elem.scrollTop);
-		console.log(elem.offsetHeight);
-		elem.scrollTo(0, elem.offsetHeight + 100);
+		this.scrollChatToBottom();
+	},
+	methods: {
+		scrollChatToBottom: function scrollChatToBottom() {
+			var elem = document.querySelector(".chat_wrapper");
+			elem.scrollTo(0, elem.offsetHeight + 1000);
+		},
+		addComment: function addComment() {
+			var _this = this;
+
+			if (this.comment != '' && this.userName != '') {
+				axios({
+					method: 'post',
+					url: '/event/' + this.eventId + '/chat',
+					data: {
+						userId: this.userId,
+						userName: this.userName,
+						comment: this.comment
+					}
+				}).then(function (response) {
+					_this.getComments();
+					_this.comment = '';
+					_this.author = '';
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		getComments: function getComments() {
+			var _this2 = this;
+
+			axios({
+				method: 'get',
+				url: '/event/' + this.eventId + '/chat'
+			}).then(function (response) {
+				_this2.commentsAll = response.data;
+				setTimeout(function () {
+					_this2.scrollChatToBottom();
+				}, 500);
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
 	}
 });
 
@@ -45014,15 +45077,90 @@ var render = function() {
     _c(
       "div",
       { staticClass: "chat_wrapper" },
-      _vm._l(_vm.comments, function(comment) {
+      _vm._l(_vm.commentsAll, function(comment) {
         return _c("chat-comment", {
           key: comment.id,
-          attrs: { comment: comment }
+          attrs: { comment: comment, author: "" }
         })
       })
     ),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "form",
+      {
+        staticClass: "comment_add",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            _vm.addComment($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.author,
+              expression: "author"
+            },
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.user === undefined,
+              expression: "user === undefined"
+            }
+          ],
+          staticClass: "form-controll",
+          attrs: {
+            type: "text",
+            placeholder: "Enter your name",
+            id: "chat_name",
+            required: _vm.user === undefined
+          },
+          domProps: { value: _vm.author },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.author = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.comment,
+              expression: "comment"
+            }
+          ],
+          staticClass: "form-controll",
+          attrs: {
+            id: "chat_comment",
+            rows: "1",
+            placeholder: "Type your comment",
+            maxlength: "220",
+            required: ""
+          },
+          domProps: { value: _vm.comment },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.comment = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -45030,16 +45168,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "comment_add" }, [
-      _c("textarea", {
-        staticClass: "form-controll",
-        attrs: { rows: "1", placeholder: "Type your comment", maxlength: "220" }
-      }),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn" }, [
-        _c("i", { staticClass: "fas fa-comment" })
-      ])
-    ])
+    return _c(
+      "button",
+      { staticClass: "btn chat_button", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "fas fa-comment" })]
+    )
   }
 ]
 render._withStripped = true
@@ -45161,6 +45294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['comment']
@@ -45180,6 +45314,9 @@ var render = function() {
     _c("span"),
     _vm._v(" "),
     _c("div", { staticClass: "comment_body" }, [
+      _c("span", [_c("b", [_vm._v(_vm._s(_vm.comment.user_name) + ":")])]),
+      _c("br"),
+      _vm._v(" "),
       _c("span", [_vm._v(_vm._s(_vm.comment.body))]),
       _c("br"),
       _vm._v(" "),

@@ -55,7 +55,7 @@
 		</div>
 		<div class="event-panel panel col-md-6 col-sm-12">
 			<div class="panel-heading">Live chat</div>
-			<chat-wrapper :comments="{{$comments}}"></chat-wrapper>
+			<chat-wrapper :comments="{{$comments}}" event-id="{{$event->id}}" @if(Auth::check()) :user="{{Auth::user()}}" @endif></chat-wrapper>
 		</div>
 	</div>
 	@if($event->place_id != '')
