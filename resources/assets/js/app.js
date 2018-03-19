@@ -23,6 +23,7 @@ Vue.component('events-table', require('./components/Events/EventsTable.vue'));
 Vue.component('message-component', require('./components/Message.vue'));
 Vue.component('chat-wrapper', require('./components/Chat/ChatWrapper.vue'));
 Vue.component('chat-comment', require('./components/Chat/ChatComment.vue'));
+Vue.component('invitations-panel', require('./components/Invitations/InvitationsPanel.vue'));
 
 
 window.eventBus = new Vue();

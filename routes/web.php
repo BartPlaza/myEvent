@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/events/create', 'DashboardController@newEvent')->name('newEvent');
 Route::get('/{user}/events', 'DashboardController@events')->name('myEvents');
+Route::get('/{user}/events/invitations', 'DashboardController@invitations')->name('myInvitations');
+
 
 Route::post('/event/create', 'EventController@store');
 Route::get('/event/{event}', 'EventController@show');

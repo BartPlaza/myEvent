@@ -11,7 +11,10 @@ use App\Comment;
 class EventController extends Controller
 {
 
-	
+	public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
 
     public function show(Event $event)
     {

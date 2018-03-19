@@ -5,4 +5,7 @@
 	<div class="dashboard_menu_item">
     	<a href="/{{Auth::id()}}/events" @if((isset($menuItem)) && ($menuItem == 1)) class="active" @endif><i class="fas fa-list-ul"></i></a><span>My events</span>
     </div>
+    <div class="dashboard_menu_item">
+    	<a href="/{{Auth::id()}}/events/invitations" @if((isset($menuItem)) && ($menuItem == 2)) class="active" @endif><i class="fas fa-user"></i></a><span>My events</span>
+    </div>
 </div>
