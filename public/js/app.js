@@ -45430,7 +45430,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#invitations_container[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-ms-flex-pack: distribute;\r\n\t    justify-content: space-around;\n}\n.invitations_section[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row;\n}\n.section_number[data-v-428f0e3a] {\r\n\twidth: 15%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\n}\n.section_number > span[data-v-428f0e3a] {\r\n\twidth: 50px;\r\n\theight: 50px;\r\n\tborder-radius: 25px;\r\n\tborder: 2px solid grey;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 24px;\r\n\tcolor: grey;\n}\n.section_content[data-v-428f0e3a]{\r\n\twidth: 85%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 22px;\n}\n.section_content > select[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\r\n\tmin-width: 200px;\n}\n.section_content > .btn[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#invitations_container[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-ms-flex-pack: distribute;\r\n\t    justify-content: space-around;\n}\n.invitations_section[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row;\n}\n.section_number[data-v-428f0e3a] {\r\n\twidth: 15%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\n}\n.section_number > span[data-v-428f0e3a] {\r\n\twidth: 50px;\r\n\theight: 50px;\r\n\tborder-radius: 25px;\r\n\tborder: 2px solid grey;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 24px;\r\n\tcolor: grey;\n}\n.section_number_icon > text[data-v-428f0e3a] {\r\n\tfont-size: 26px;\n}\n.text_end[data-v-428f0e3a] {\r\n\tfill: #5cb85c;\r\n\t-webkit-transition: fill 1s;\r\n\ttransition: fill 1s;\n}\n.circle_start[data-v-428f0e3a] {\r\n\tstroke-dasharray: 156.06741333007812;\r\n\tstroke-dashoffset: 156.06741333007812;\n}\n.circle_end[data-v-428f0e3a] {\r\n\tstroke-dashoffset: 0;\r\n\t-webkit-transition: stroke-dashoffset 1s;\r\n\ttransition: stroke-dashoffset 1s;\n}\n.method_selected[data-v-428f0e3a] {\r\n\tbackground-color: lightgrey;\n}\n.section_content[data-v-428f0e3a]{\r\n\twidth: 85%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 22px;\n}\n.section_content > select[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\r\n\tmin-width: 200px;\n}\n.section_content > .btn[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -45473,6 +45473,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45480,15 +45488,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			event: '',
-			step: 1
+			method: ''
 		};
-	},
-	watch: {
-		event: function event() {
-			if (this.event != '') {
-				this.step = 2;
-			}
-		}
 	}
 });
 
@@ -45502,10 +45503,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "invitations_container" } }, [
     _c("div", { staticClass: "invitations_section" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "section_number" }, [
+        _c(
+          "svg",
+          {
+            staticClass: "section_number_icon",
+            attrs: { height: "100", width: "100" }
+          },
+          [
+            _c("circle", {
+              attrs: {
+                cx: "50",
+                cy: "50",
+                r: "25",
+                stroke: "lightgrey",
+                "stroke-width": "2px",
+                fill: "none"
+              }
+            }),
+            _vm._v(" "),
+            _c("circle", {
+              staticClass: "circle_start",
+              class: { circle_end: _vm.event != "" },
+              attrs: {
+                cx: "50",
+                cy: "50",
+                r: "25",
+                stroke: "#5cb85c",
+                "stroke-width": "3px",
+                fill: "none"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "text",
+              {
+                class: { text_end: _vm.event != "" },
+                attrs: { x: "44", y: "57", fill: "grey" }
+              },
+              [_vm._v("1")]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "section_content" }, [
-        _vm._v("\n\t\t\t\tChose event:\n\t\t\t\t"),
+        _vm._v("\n\t\t\tChose event:\n\t\t\t"),
         _c(
           "select",
           {
@@ -45549,51 +45592,97 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.step === 2,
-            expression: "step === 2"
+            value: _vm.event != "",
+            expression: "event != ''"
           }
         ],
         staticClass: "invitations_section"
       },
-      [_vm._m(1), _vm._v(" "), _vm._m(2)]
+      [
+        _c("div", { staticClass: "section_number" }, [
+          _c(
+            "svg",
+            {
+              staticClass: "section_number_icon",
+              attrs: { height: "100", width: "100" }
+            },
+            [
+              _c("circle", {
+                attrs: {
+                  cx: "50",
+                  cy: "50",
+                  r: "25",
+                  stroke: "lightgrey",
+                  "stroke-width": "2px",
+                  fill: "none"
+                }
+              }),
+              _vm._v(" "),
+              _c("circle", {
+                staticClass: "circle_start",
+                class: { circle_end: _vm.method != "" },
+                attrs: {
+                  cx: "50",
+                  cy: "50",
+                  r: "25",
+                  stroke: "#5cb85c",
+                  "stroke-width": "3px",
+                  fill: "none"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  class: { text_end: _vm.method != "" },
+                  attrs: { x: "44", y: "57", fill: "grey" }
+                },
+                [_vm._v("2")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "section_content" }, [
+          _vm._v("\n\t\t\tChose the type of invitation:\n\t\t\t"),
+          _c(
+            "div",
+            {
+              staticClass: "btn btn-default btn-lg",
+              class: { method_selected: _vm.method === 1 },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.method = 1
+                }
+              }
+            },
+            [_vm._v("email: "), _c("i", { staticClass: "far fa-envelope" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "btn btn-default btn-lg",
+              class: { method_selected: _vm.method === 2 },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.method = 2
+                }
+              }
+            },
+            [
+              _vm._v("facebook: "),
+              _c("i", { staticClass: "fab fa-facebook-square" })
+            ]
+          )
+        ])
+      ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section_number" }, [
-      _c("span", [_vm._v("1")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section_number" }, [
-      _c("span", [_vm._v("2")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section_content" }, [
-      _vm._v("\n\t\t\t\tChose the type of invitation:\n\t\t\t\t"),
-      _c("div", { staticClass: "btn btn-default btn-lg" }, [
-        _vm._v("email: "),
-        _c("i", { staticClass: "far fa-envelope" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "btn btn-default btn-lg" }, [
-        _vm._v("facebook: "),
-        _c("i", { staticClass: "fab fa-facebook-square" })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
