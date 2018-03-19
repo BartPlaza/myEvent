@@ -45430,7 +45430,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#invitations_container[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-ms-flex-pack: distribute;\r\n\t    justify-content: space-around;\n}\n.invitations_section[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row;\n}\n.section_number[data-v-428f0e3a] {\r\n\twidth: 15%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\n}\n.section_number > span[data-v-428f0e3a] {\r\n\twidth: 50px;\r\n\theight: 50px;\r\n\tborder-radius: 25px;\r\n\tborder: 2px solid grey;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 24px;\r\n\tcolor: grey;\n}\n.section_number_icon > text[data-v-428f0e3a] {\r\n\tfont-size: 26px;\n}\n.text_end[data-v-428f0e3a] {\r\n\tfill: #5cb85c;\r\n\t-webkit-transition: fill 1s;\r\n\ttransition: fill 1s;\n}\n.circle_start[data-v-428f0e3a] {\r\n\tstroke-dasharray: 156.06741333007812;\r\n\tstroke-dashoffset: 156.06741333007812;\n}\n.circle_end[data-v-428f0e3a] {\r\n\tstroke-dashoffset: 0;\r\n\t-webkit-transition: stroke-dashoffset 1s;\r\n\ttransition: stroke-dashoffset 1s;\n}\n.method_selected[data-v-428f0e3a] {\r\n\tbackground-color: lightgrey;\n}\n.section_content[data-v-428f0e3a]{\r\n\twidth: 85%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 22px;\n}\n.section_content > select[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\r\n\tmin-width: 200px;\n}\n.section_content > .btn[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#invitations_container[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-ms-flex-pack: distribute;\r\n\t    justify-content: space-around;\n}\n.invitations_section[data-v-428f0e3a] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row;\n}\n.section_number[data-v-428f0e3a] {\r\n\twidth: 15%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\n}\n.section_number > span[data-v-428f0e3a] {\r\n\twidth: 50px;\r\n\theight: 50px;\r\n\tborder-radius: 25px;\r\n\tborder: 2px solid grey;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 24px;\r\n\tcolor: grey;\n}\n.section_number_icon > text[data-v-428f0e3a] {\r\n\tfont-size: 26px;\n}\n.text_end[data-v-428f0e3a] {\r\n\tfill: #5cb85c;\r\n\t-webkit-transition: fill 1s;\r\n\ttransition: fill 1s;\n}\n.circle_start[data-v-428f0e3a] {\r\n\tstroke-dasharray: 156.06741333007812;\r\n\tstroke-dashoffset: 156.06741333007812;\n}\n.circle_during[data-v-428f0e3a] {\r\n\tstroke-dashoffset: 95;\r\n\t-webkit-transition: stroke-dashoffset 1s;\r\n\ttransition: stroke-dashoffset 1s;\n}\n.circle_end[data-v-428f0e3a] {\r\n\tstroke-dashoffset: 0;\r\n\t-webkit-transition: stroke-dashoffset 1s;\r\n\ttransition: stroke-dashoffset 1s;\n}\n.method_selected[data-v-428f0e3a] {\r\n\tbackground-color: lightgrey;\n}\n.section_content[data-v-428f0e3a]{\r\n\twidth: 85%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\tfont-size: 22px;\n}\n.section_content > select[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\r\n\tmin-width: 200px;\r\n\tmax-width: 300px;\n}\n.section_content > .btn[data-v-428f0e3a] {\r\n\tmargin-left: 20px;\n}\n.section_content > input[data-v-428f0e3a] {\r\n\twidth: 300px;\r\n\tmargin-left: 20px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -45481,6 +45481,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45488,8 +45505,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			event: '',
-			method: ''
+			method: '',
+			email: '',
+			during: false,
+			send: false
 		};
+	},
+	methods: {
+		sendEmail: function sendEmail() {
+			var _this = this;
+
+			if (this.email != '') {
+				this.during = true;
+				axios({
+					method: 'post',
+					url: '/event/' + this.event + '/invite',
+					data: {
+						email: this.email
+					}
+				}).then(function (response) {
+					_this.during = false;
+					_this.send = true;
+
+					setTimeout(function () {
+						_this.email = '';
+						_this.send = false;
+					}, 2000);
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}
 	}
 });
 
@@ -45560,6 +45606,7 @@ var render = function() {
                 expression: "event"
               }
             ],
+            staticClass: "form-control",
             on: {
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
@@ -45577,7 +45624,9 @@ var render = function() {
             }
           },
           _vm._l(_vm.events, function(event) {
-            return _c("option", [_vm._v(_vm._s(event.title))])
+            return _c("option", { domProps: { value: event.id } }, [
+              _vm._v(_vm._s(event.title))
+            ])
           })
         )
       ])
@@ -45679,6 +45728,127 @@ var render = function() {
           )
         ])
       ]
+    ),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.method === 1,
+            expression: "method === 1"
+          }
+        ],
+        staticClass: "invitations_section"
+      },
+      [
+        _c("div", { staticClass: "section_number" }, [
+          _c(
+            "svg",
+            {
+              staticClass: "section_number_icon",
+              attrs: { height: "100", width: "100" }
+            },
+            [
+              _c("circle", {
+                attrs: {
+                  cx: "50",
+                  cy: "50",
+                  r: "25",
+                  stroke: "lightgrey",
+                  "stroke-width": "2px",
+                  fill: "none"
+                }
+              }),
+              _vm._v(" "),
+              _c("circle", {
+                staticClass: "circle_start",
+                class: { circle_end: _vm.send, circle_during: _vm.during },
+                attrs: {
+                  cx: "50",
+                  cy: "50",
+                  r: "25",
+                  stroke: "#5cb85c",
+                  "stroke-width": "3px",
+                  fill: "none"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  class: { text_end: _vm.send },
+                  attrs: { x: "44", y: "57", fill: "grey" }
+                },
+                [_vm._v("3")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "section_content",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.sendEmail($event)
+              }
+            }
+          },
+          [
+            _vm._v("\n\t\t\tEnter invited user email:\n\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "email", required: "" },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-default", attrs: { type: "submit" } },
+              [_vm._v("Send")]
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.send,
+            expression: "send"
+          }
+        ],
+        staticClass: "alert alert-success"
+      },
+      [_vm._v("\n\t\tMail with invitation was send!\n\t")]
     )
   ])
 }

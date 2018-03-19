@@ -11,8 +11,8 @@
 			</div>
 			<div class="section_content">
 				Chose event:
-				<select v-model="event">
-					<option v-for="event in events">{{event.title}}</option>
+				<select v-model="event" class="form-control">
+					<option v-for="event in events" :value="event.id">{{event.title}}</option>
 				</select>
 			</div>
 		</div>
@@ -29,9 +29,26 @@
 				Chose the type of invitation:
 				<div class="btn btn-default btn-lg" :class="{'method_selected' : method === 1}" @click.prevent = "method = 1">email: <i class="far fa-envelope"></i></div>
 				<div class="btn btn-default btn-lg" :class="{'method_selected' : method === 2}" @click.prevent = "method = 2">facebook: <i class="fab fa-facebook-square"></i>
-
 				</div>
 			</div>
+		</div>
+		<hr/>
+		<div class="invitations_section" v-show="method === 1">
+			<div class="section_number">	
+				<svg height="100" width="100" class="section_number_icon">
+					<circle cx="50" cy="50" r="25" stroke="lightgrey" stroke-width="2px" fill="none"/>
+					<circle class="circle_start" :class="{'circle_end' : send, 'circle_during' : during}"cx="50" cy="50" r="25" stroke="#5cb85c" stroke-width="3px" fill="none"/>
+					<text :class="{'text_end' : send}" x="44" y="57" fill="grey">3</text>
+				</svg>
+			</div>
+			<form class="section_content" @submit.prevent="sendEmail">
+				Enter invited user email:
+				<input type="email" class="form-control" v-model="email" required>
+				<button type="submit" class="btn btn-default">Send</button>
+			</form>
+		</div>
+		<div class="alert alert-success" v-show="send">
+			Mail with invitation was send!
 		</div>
 	</div>
 
@@ -45,7 +62,36 @@ export default {
 	data: function(){
 		return {
 			event: '',
-			method: ''
+			method: '',
+			email: '',
+			during: false,
+			send: false
+		}
+	},
+	methods: {
+		sendEmail(){
+			if(this.email != ''){
+				this.during = true;
+				axios({
+				method: 'post',
+				url: '/event/'+this.event+'/invite',
+				data: {
+					email: this.email
+					}
+				})
+				.then((response)=>{
+					this.during = false;
+					this.send = true;
+
+					setTimeout(()=>{
+						this.email= '';
+						this.send = false;
+					},2000);
+				})
+				.catch((error)=>{
+					console.log(error);
+				});
+			}
 		}
 	}
 }
@@ -104,6 +150,11 @@ export default {
 
 }
 
+.circle_during {
+	stroke-dashoffset: 95;
+	transition: stroke-dashoffset 1s;
+}
+
 .circle_end {
 	stroke-dashoffset: 0;
 	transition: stroke-dashoffset 1s;
@@ -123,9 +174,15 @@ export default {
 .section_content > select {
 	margin-left: 20px;
 	min-width: 200px;
+	max-width: 300px;
 }
 
 .section_content > .btn {
+	margin-left: 20px;
+}
+
+.section_content > input {
+	width: 300px;
 	margin-left: 20px;
 }
 

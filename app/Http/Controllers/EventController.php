@@ -50,4 +50,9 @@ class EventController extends Controller
     	$event->delete();
     	return $event->id;
     }
+
+    public function invite(Request $request, Event $event){
+        $event->sendInvitation($request->email);
+        return 'aaaa';
+    }
 }
